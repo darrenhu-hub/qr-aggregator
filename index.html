@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
+    <title>扫码聚合页</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+            background: #f8f9fa;
+            color: #1a1a1a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 60px;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            width: 100%;
+            background: linear-gradient(135deg, #b22222 0%, #d43f3f 50%, #e86868 100%);
+            padding: 32px 20px 28px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: #f8f9fa;
+            border-radius: 24px 24px 0 0;
+        }
+        .hero h1 {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .hero p {
+            color: rgba(255,255,255,0.85);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* Section titles */
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            padding: 24px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title .badge {
+            font-size: 12px;
+            font-weight: 500;
+            background: #e8e8e8;
+            color: #666;
+            padding: 2px 10px;
+            border-radius: 12px;
+        }
+
+        /* Hero Poster */
+        .poster-card {
+            margin-top: -12px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            background: #fff;
+        }
+        .poster-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .poster-card .caption {
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #888;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        /* QR Grid */
+        .qr-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .qr-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            border: 1px solid #f0f0f0;
+        }
+        .qr-card:active {
+            transform: scale(0.97);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .qr-card .img-wrap {
+            position: relative;
+            padding: 16px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .qr-card .img-wrap::after {
+            content: '🔍 长按识别';
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .qr-card:hover .img-wrap::after {
+            opacity: 1;
+        }
+        .qr-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+        .qr-card .info {
+            padding: 10px 14px 14px;
+            border-top: 1px solid #f5f5f5;
+        }
+        .qr-card .info .label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #333;
+        }
+        .qr-card .info .url {
+            font-size: 11px;
+            color: #999;
+            margin-top: 2px;
+            word-break: break-all;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .qr-card .info .tap-hint {
+            font-size: 11px;
+            color: #4a90d9;
+            margin-top: 4px;
+        }
+
+        /* Small images gallery */
+        .img-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .img-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #f0f0f0;
+        }
+        .img-card .img-wrap {
+            padding: 12px;
+            background: #fafafa;
+        }
+        .img-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+        .img-card .info {
+            padding: 10px 14px 14px;
+            border-top: 1px solid #f5f5f5;
+        }
+        .img-card .info .label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* Tip Banner */
+        .tip {
+            background: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin: 20px 0 8px;
+            font-size: 13px;
+            color: #8c6d00;
+            line-height: 1.6;
+        }
+        .tip strong {
+            color: #d48806;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px 16px 16px;
+            font-size: 12px;
+            color: #bbb;
+        }
+
+        /* Responsive - single column on very small screens only if needed */
+        @media (max-width: 360px) {
+            .qr-grid, .img-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>扫码聚合</h1>
+        <p>长按任意二维码 · 识别跳转</p>
+    </div>
+
+    <div class="container">
+
+        <!-- Big Poster -->
+        <div class="poster-card">
+            <img src="微信图片_2026-06-25_133926_326.png" alt="活动海报" loading="lazy">
+            <div class="caption">📋 活动主海报</div>
+        </div>
+
+        <!-- Tip -->
+        <div class="tip">
+            <strong>💡 使用提示：</strong>在微信中长按下方二维码图片，选择「识别图中二维码」即可跳转到对应链接。也可以直接点击二维码跳转。
+        </div>
+
+        <!-- QR Codes Section -->
+        <div class="section-title">
+            📱 优惠码 <span class="badge">6个</span>
+        </div>
+
+        <div class="qr-grid" id="qrGrid">
+            <!-- QR codes will be rendered by JS -->
+        </div>
+
+        <!-- Small Images -->
+        <div class="section-title" style="margin-top:8px;">
+            🖼️ 配图 <span class="badge">4张</span>
+        </div>
+
+        <div class="img-grid" id="imgGrid">
+            <!-- Small images rendered by JS -->
+        </div>
+
+        <div class="footer">
+            扫码聚合页 · 长按识别图中二维码
+        </div>
+    </div>
+
+    <script>
+        // QR Code data (JPGs that decoded successfully)
+        const qrData = [
+            { file: "微信图片_2026-06-25_133900_043.jpg", label: "美团返利码 #1", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02504821296061" },
+            { file: "微信图片_2026-06-25_133913_999.jpg", label: "美团返利码 #2", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02508608189337" },
+            { file: "微信图片_2026-06-25_133917_189.jpg", label: "美团返利码 #3", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02506673805436" },
+            { file: "微信图片_2026-06-25_133920_245.jpg", label: "美团返利码 #4", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02505503786572" },
+            { file: "微信图片_2026-06-25_133922_712.jpg", label: "美团返利码 #5", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02506445534810" },
+        ];
+
+        // Small image files (PNGs, not QR codes, some are identical)
+        const imgFiles = [
+            "微信图片_2026-06-25_133928_971.png",
+            "微信图片_2026-06-25_133931_401.png",
+            "微信图片_2026-06-25_133933_882.png",
+            "微信图片_2026-06-25_133936_562.png",
+        ];
+
+        // Render QR codes
+        const qrGrid = document.getElementById('qrGrid');
+        qrData.forEach((item, i) => {
+            const card = document.createElement('a');
+            card.className = 'qr-card';
+            card.href = item.url;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+
+            card.innerHTML = `
+                <div class="img-wrap">
+                    <img src="${item.file}" alt="${item.label}" loading="lazy">
+                </div>
+                <div class="info">
+                    <div class="label">${item.label}</div>
+                    <div class="url" title="${item.url}">${item.url}</div>
+                    <div class="tap-hint">👆 点击跳转 · 长按识别</div>
+                </div>
+            `;
+            qrGrid.appendChild(card);
+        });
+
+        // Render small images
+        const imgGrid = document.getElementById('imgGrid');
+        imgFiles.forEach((file, i) => {
+            const card = document.createElement('div');
+            card.className = 'img-card';
+            card.innerHTML = `
+                <div class="img-wrap">
+                    <img src="${file}" alt="配图 ${i+1}" loading="lazy">
+                </div>
+                <div class="info">
+                    <div class="label">配图 ${i+1}</div>
+                </div>
+            `;
+            imgGrid.appendChild(card);
+        });
+    </script>
+
+</body>
+</html>
