@@ -3,82 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
-    <title>扫码聚合页</title>
+    <title>一品香烤肉 · 扫码优惠</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
-            background: #f8f9fa;
-            color: #1a1a1a;
+            background: #f5f0eb;
+            color: #2c2418;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            padding-bottom: 60px;
+            padding-bottom: 48px;
         }
 
-        /* Hero */
+        /* ===== Hero ===== */
         .hero {
             position: relative;
             width: 100%;
-            background: linear-gradient(135deg, #b22222 0%, #d43f3f 50%, #e86868 100%);
-            padding: 32px 20px 28px;
+            background: linear-gradient(160deg, #3a1508 0%, #6a2a16 35%, #a04422 70%, #c75a30 100%);
+            padding: 48px 20px 36px;
             text-align: center;
             overflow: hidden;
         }
+        .hero::before {
+            content: '🥩';
+            position: absolute;
+            top: 10px;
+            left: 12px;
+            font-size: 70px;
+            opacity: 0.10;
+            transform: rotate(-15deg);
+        }
         .hero::after {
-            content: '';
+            content: '🔥';
+            position: absolute;
+            bottom: 40px;
+            right: 12px;
+            font-size: 60px;
+            opacity: 0.10;
+            transform: rotate(15deg);
+        }
+        .hero .fire-l {
+            position: absolute;
+            top: 30px;
+            left: 40%;
+            font-size: 28px;
+            opacity: 0.08;
+        }
+        .hero .fire-r {
+            position: absolute;
+            bottom: 55px;
+            right: 35%;
+            font-size: 28px;
+            opacity: 0.08;
+        }
+        .hero .wave {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 40px;
-            background: #f8f9fa;
-            border-radius: 24px 24px 0 0;
+            height: 28px;
+            background: #f5f0eb;
+            border-radius: 28px 28px 0 0;
         }
-        .hero h1 {
+        .hero .brand-icon {
+            font-size: 52px;
+            display: block;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        .hero .brand-name {
             color: #fff;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: 6px;
+            text-shadow: 0 4px 16px rgba(0,0,0,0.35);
+            position: relative;
         }
-        .hero p {
-            color: rgba(255,255,255,0.85);
+        .hero .brand-name .en {
             font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            opacity: 0.75;
+            display: block;
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .hero .brand-line {
+            width: 60px;
+            height: 3px;
+            background: rgba(255,255,255,0.4);
+            margin: 12px auto 10px;
+            border-radius: 2px;
+        }
+        .hero .subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
             margin-top: 8px;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        .hero .subtitle span {
+            display: inline-block;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 3px 14px;
+            margin: 0 3px;
+            font-size: 12px;
         }
 
-        /* Container */
+        /* ===== Container ===== */
         .container {
             max-width: 480px;
             margin: 0 auto;
             padding: 0 16px;
         }
 
-        /* Section titles */
+        /* ===== Section title ===== */
         .section-title {
             font-size: 18px;
-            font-weight: 600;
-            padding: 24px 0 12px;
+            font-weight: 700;
+            padding: 24px 0 4px;
             display: flex;
             align-items: center;
             gap: 8px;
+            color: #4a1f0d;
         }
         .section-title .badge {
             font-size: 12px;
             font-weight: 500;
-            background: #e8e8e8;
-            color: #666;
+            background: #e8ddd4;
+            color: #7a3420;
             padding: 2px 10px;
             border-radius: 12px;
         }
+        .section-desc {
+            font-size: 13px;
+            color: #8a7a6a;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e8ddd4;
+            margin-bottom: 4px;
+        }
 
-        /* Hero Poster */
+        /* ===== Store Info Card ===== */
+        .store-card {
+            background: #fff;
+            border-radius: 16px;
+            margin-top: -8px;
+            padding: 20px 20px 16px;
+            box-shadow: 0 4px 20px rgba(74,31,13,0.10);
+            text-align: center;
+        }
+        .store-card .store-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #4a1f0d;
+        }
+        .store-card .store-tags {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .store-card .store-tags span {
+            background: #f5f0eb;
+            color: #7a3420;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .store-card .store-desc {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #6a5a4a;
+            line-height: 1.7;
+        }
+
+        /* ===== Poster ===== */
         .poster-card {
-            margin-top: -12px;
+            margin-top: 16px;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.10);
             background: #fff;
         }
         .poster-card img {
@@ -87,14 +194,67 @@
             display: block;
         }
         .poster-card .caption {
-            padding: 12px 16px;
-            font-size: 13px;
-            color: #888;
+            padding: 10px 16px;
+            font-size: 14px;
+            color: #6a5a4a;
             text-align: center;
-            border-top: 1px solid #f0f0f0;
+            border-top: 1px solid #f0ebe6;
         }
 
-        /* QR Grid */
+        /* ===== Tip ===== */
+        .tip {
+            background: #fff;
+            border: 1px solid #e8ddd4;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin: 18px 0 8px;
+            font-size: 13px;
+            color: #5a4a3a;
+            line-height: 1.7;
+        }
+        .tip strong {
+            color: #b15131;
+        }
+
+        /* ===== Image Grid ===== */
+        .img-grid-section {
+            margin-top: 24px;
+        }
+        .img-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .img-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #ede6de;
+        }
+        .img-card .img-wrap {
+            padding: 12px;
+            background: #faf5f0;
+        }
+        .img-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+        .img-card .info {
+            padding: 10px 14px 14px;
+            border-top: 1px solid #f0ebe6;
+            text-align: center;
+        }
+        .img-card .info .label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #4a1f0d;
+        }
+
+        /* ===== QR Grid ===== */
         .qr-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -110,11 +270,12 @@
             transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
-            border: 1px solid #f0f0f0;
+            border: 1px solid #ede6de;
+            text-decoration: none;
+            color: inherit;
         }
         .qr-card:active {
             transform: scale(0.97);
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
         }
         .qr-card .img-wrap {
             position: relative;
@@ -124,22 +285,16 @@
             align-items: center;
             justify-content: center;
         }
-        .qr-card .img-wrap::after {
-            content: '🔍 长按识别';
+        .qr-card .img-wrap .hint {
             position: absolute;
             bottom: 8px;
             right: 8px;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.55);
             color: #fff;
             font-size: 10px;
             padding: 2px 8px;
             border-radius: 8px;
-            opacity: 0;
-            transition: opacity 0.3s;
             pointer-events: none;
-        }
-        .qr-card:hover .img-wrap::after {
-            opacity: 1;
         }
         .qr-card img {
             width: 100%;
@@ -149,16 +304,16 @@
         }
         .qr-card .info {
             padding: 10px 14px 14px;
-            border-top: 1px solid #f5f5f5;
+            border-top: 1px solid #f0ebe6;
         }
         .qr-card .info .label {
             font-size: 13px;
-            font-weight: 500;
-            color: #333;
+            font-weight: 600;
+            color: #4a1f0d;
         }
         .qr-card .info .url {
             font-size: 11px;
-            color: #999;
+            color: #9a8a7a;
             margin-top: 2px;
             word-break: break-all;
             overflow: hidden;
@@ -167,68 +322,22 @@
         }
         .qr-card .info .tap-hint {
             font-size: 11px;
-            color: #4a90d9;
+            color: #b15131;
             margin-top: 4px;
         }
 
-        /* Small images gallery */
-        .img-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 8px;
-        }
-        .img-card {
-            background: #fff;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            border: 1px solid #f0f0f0;
-        }
-        .img-card .img-wrap {
-            padding: 12px;
-            background: #fafafa;
-        }
-        .img-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 4px;
-        }
-        .img-card .info {
-            padding: 10px 14px 14px;
-            border-top: 1px solid #f5f5f5;
-        }
-        .img-card .info .label {
-            font-size: 13px;
-            font-weight: 500;
-            color: #333;
-        }
-
-        /* Tip Banner */
-        .tip {
-            background: #fffbe6;
-            border: 1px solid #ffe58f;
-            border-radius: 12px;
-            padding: 14px 16px;
-            margin: 20px 0 8px;
-            font-size: 13px;
-            color: #8c6d00;
-            line-height: 1.6;
-        }
-        .tip strong {
-            color: #d48806;
-        }
-
-        /* Footer */
+        /* ===== Footer ===== */
         .footer {
             text-align: center;
-            padding: 32px 16px 16px;
+            padding: 28px 16px 12px;
             font-size: 12px;
-            color: #bbb;
+            color: #b0a090;
+        }
+        .footer .heart {
+            color: #b15131;
         }
 
-        /* Responsive - single column on very small screens only if needed */
+        /* ===== Responsive ===== */
         @media (max-width: 360px) {
             .qr-grid, .img-grid {
                 grid-template-columns: 1fr;
@@ -238,101 +347,126 @@
 </head>
 <body>
 
-    <!-- Hero -->
+    <!-- ========== Hero ========== -->
     <div class="hero">
-        <h1>扫码聚合</h1>
-        <p>长按任意二维码 · 识别跳转</p>
+        <span class="brand-icon">🥩</span>
+        <div class="brand-name">
+            一品香烤肉
+            <span class="en">Yipinxiang BBQ</span>
+        </div>
+        <div class="brand-line"></div>
+        <div class="subtitle">
+            <span>🔥 炭火烤肉</span>
+            <span>🥩 鲜切现烤</span>
+            <span>🍻 聚餐首选</span>
+        </div>
+        <span class="fire-l">🔥</span>
+        <span class="fire-r">🔥</span>
+        <div class="wave"></div>
     </div>
 
     <div class="container">
 
-        <!-- Big Poster -->
+        <!-- ========== Store Info ========== -->
+        <div class="store-card">
+            <div class="store-name">🍖 一品香烤肉</div>
+            <div class="store-tags">
+                <span>📍 到店扫码</span>
+                <span>🎫 领券优惠</span>
+                <span>📱 长按识别</span>
+            </div>
+            <div class="store-desc">
+                扫码领券 · 下单立减<br>
+                长按下方二维码即可识别跳转
+            </div>
+        </div>
+
+        <!-- ========== Poster ========== -->
         <div class="poster-card">
-            <img src="微信图片_2026-06-25_133926_326.png" alt="活动海报" loading="lazy">
-            <div class="caption">📋 活动主海报</div>
+            <img src="微信图片_2026-06-25_133926_326.png" alt="一品香烤肉活动海报" loading="lazy">
+            <div class="caption">📋 店铺活动海报</div>
         </div>
 
-        <!-- Tip -->
+        <!-- ========== Tip ========== -->
         <div class="tip">
-            <strong>💡 使用提示：</strong>在微信中长按下方二维码图片，选择「识别图中二维码」即可跳转到对应链接。也可以直接点击二维码跳转。
+            <strong>💡 使用说明：</strong>在微信中长按下方任意二维码，选择「识别图中二维码」即可领取对应优惠。也可直接点击二维码跳转链接。
         </div>
 
-        <!-- QR Codes Section -->
+        <!-- ========== QR Codes ========== -->
         <div class="section-title">
-            📱 优惠码 <span class="badge">6个</span>
+            🎟️ 优惠码 <span class="badge">5个</span>
+        </div>
+        <div class="section-desc">长按识别图中二维码 · 领取大众点评优惠</div>
+
+        <div class="qr-grid" id="qrGrid"></div>
+
+        <!-- ========== Douyin Images ========== -->
+        <div class="img-grid-section">
+            <div class="section-title">
+                📱 抖音优惠 <span class="badge">4张</span>
+            </div>
+            <div class="section-desc">打开抖音扫一扫 · 关注领取更多福利</div>
+            <div class="img-grid" id="imgGrid"></div>
         </div>
 
-        <div class="qr-grid" id="qrGrid">
-            <!-- QR codes will be rendered by JS -->
-        </div>
-
-        <!-- Small Images -->
-        <div class="section-title" style="margin-top:8px;">
-            🖼️ 配图 <span class="badge">4张</span>
-        </div>
-
-        <div class="img-grid" id="imgGrid">
-            <!-- Small images rendered by JS -->
-        </div>
-
+        <!-- ========== Footer ========== -->
         <div class="footer">
-            扫码聚合页 · 长按识别图中二维码
+            一品香烤肉 · <span class="heart">♥</span> 欢迎您的光临<br>
+            长按识别图中二维码 · 领券更优惠
         </div>
+
     </div>
 
     <script>
-        // QR Code data (JPGs that decoded successfully)
         const qrData = [
-            { file: "微信图片_2026-06-25_133900_043.jpg", label: "美团返利码 #1", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02504821296061" },
-            { file: "微信图片_2026-06-25_133913_999.jpg", label: "美团返利码 #2", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02508608189337" },
-            { file: "微信图片_2026-06-25_133917_189.jpg", label: "美团返利码 #3", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02506673805436" },
-            { file: "微信图片_2026-06-25_133920_245.jpg", label: "美团返利码 #4", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02505503786572" },
-            { file: "微信图片_2026-06-25_133922_712.jpg", label: "美团返利码 #5", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02506445534810" },
+            { file: "微信图片_2026-06-25_133900_043.jpg", label: "大众点评优惠", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02504821296061" },
+            { file: "微信图片_2026-06-25_133913_999.jpg", label: "大众点评优惠", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02508608189337" },
+            { file: "微信图片_2026-06-25_133917_189.jpg", label: "大众点评优惠", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02506673805436" },
+            { file: "微信图片_2026-06-25_133920_245.jpg", label: "大众点评优惠", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02505503786572" },
+            { file: "微信图片_2026-06-25_133922_712.jpg", label: "大众点评优惠", url: "https://apimobile.meituan.com/qrcode/dprebate?code=02506445534810" },
         ];
 
-        // Small image files (PNGs, not QR codes, some are identical)
+        const qrGrid = document.getElementById('qrGrid');
+        qrData.forEach(item => {
+            const card = document.createElement('a');
+            card.className = 'qr-card';
+            card.href = item.url;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            card.innerHTML = [
+                '<div class="img-wrap">',
+                `  <img src="${item.file}" alt="${item.label}" loading="lazy">`,
+                '  <span class="hint">🔍 长按识别</span>',
+                '</div>',
+                '<div class="info">',
+                `  <div class="label">${item.label}</div>`,
+                `  <div class="url" title="${item.url}">${item.url}</div>`,
+                '  <div class="tap-hint">👆 点击跳转 · 长按识别</div>',
+                '</div>'
+            ].join('');
+            qrGrid.appendChild(card);
+        });
+
+        // Render douyin images
         const imgFiles = [
             "微信图片_2026-06-25_133928_971.png",
             "微信图片_2026-06-25_133931_401.png",
             "微信图片_2026-06-25_133933_882.png",
             "微信图片_2026-06-25_133936_562.png",
         ];
-
-        // Render QR codes
-        const qrGrid = document.getElementById('qrGrid');
-        qrData.forEach((item, i) => {
-            const card = document.createElement('a');
-            card.className = 'qr-card';
-            card.href = item.url;
-            card.target = '_blank';
-            card.rel = 'noopener noreferrer';
-
-            card.innerHTML = `
-                <div class="img-wrap">
-                    <img src="${item.file}" alt="${item.label}" loading="lazy">
-                </div>
-                <div class="info">
-                    <div class="label">${item.label}</div>
-                    <div class="url" title="${item.url}">${item.url}</div>
-                    <div class="tap-hint">👆 点击跳转 · 长按识别</div>
-                </div>
-            `;
-            qrGrid.appendChild(card);
-        });
-
-        // Render small images
         const imgGrid = document.getElementById('imgGrid');
-        imgFiles.forEach((file, i) => {
+        imgFiles.forEach(file => {
             const card = document.createElement('div');
             card.className = 'img-card';
-            card.innerHTML = `
-                <div class="img-wrap">
-                    <img src="${file}" alt="配图 ${i+1}" loading="lazy">
-                </div>
-                <div class="info">
-                    <div class="label">配图 ${i+1}</div>
-                </div>
-            `;
+            card.innerHTML = [
+                '<div class="img-wrap">',
+                `  <img src="${file}" alt="抖音优惠" loading="lazy">`,
+                '</div>',
+                '<div class="info">',
+                '  <div class="label">📱 抖音优惠</div>',
+                '  <div class="tap-hint" style="font-size:11px;color:#b15131;margin-top:2px">扫一扫 · 关注领福利</div>',
+                '</div>'
+            ].join('');
             imgGrid.appendChild(card);
         });
     </script>
