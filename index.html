@@ -314,41 +314,11 @@
 
     <script>
         const stores = [
-            {
-                name: '夏湾创始店',
-                address: '夏湾路 骏兴苑101号店铺',
-                phone: '',
-                jpg: '夏湾创始店：夏湾路 骏兴苑101号店铺 .jpg',
-                png: '夏湾创始店：夏湾路 骏兴苑101号店铺        .png'
-            },
-            {
-                name: '柠溪二店',
-                address: '柠溪路 柠溪大厦271号店铺',
-                phone: '(0756) 228 9586',
-                jpg: '柠溪二店：柠溪路 柠溪大厦271号店铺(0756) 228 9586 .jpg',
-                png: '柠溪二店：柠溪路 柠溪大厦271号店铺(0756) 228 9586 .png'
-            },
-            {
-                name: '南屏三店',
-                address: '南屏路 花街步行街 D6A店铺',
-                phone: '(0756) 393 1549',
-                jpg: '南屏三店：南屏路 花街步行街 D6A店铺(0756) 393 1549 .jpg',
-                png: '南屏三店：南屏路 花街步行街 D6A店铺(0756) 393 1549 .png'
-            },
-            {
-                name: '吉大四店',
-                address: '景园路 金嘉创意园106号店铺',
-                phone: '(0756) 617 6076',
-                jpg: '吉大四店：景园路 金嘉创意园106号店铺(0756) 617 6076.jpg',
-                png: '吉大四店：景园路 金嘉创意园106号店铺(0756) 617 6076.png'
-            },
-            {
-                name: '坦洲五店',
-                address: '南坦路 牡丹酒店旁141号店铺',
-                phone: '(0760) 8698 5356',
-                jpg: '坦洲五店：南坦路 牡丹酒店旁141号店铺(0760) 8698 5356.jpg',
-                png: '坦洲五店：南坦路 牡丹酒店旁141号店铺(0760) 8698 5356.png'
-            }
+            { name: '夏湾创始店', address: '夏湾路 骏兴苑101号店铺', phone: '', img1: 'store1_dianping.jpg', img2: 'store1_douyin.png' },
+            { name: '柠溪二店', address: '柠溪路 柠溪大厦271号店铺', phone: '(0756) 228 9586', img1: 'store2_dianping.jpg', img2: 'store2_douyin.png' },
+            { name: '南屏三店', address: '南屏路 花街步行街 D6A店铺', phone: '(0756) 393 1549', img1: 'store3_dianping.jpg', img2: 'store3_douyin.png' },
+            { name: '吉大四店', address: '景园路 金嘉创意园106号店铺', phone: '(0756) 617 6076', img1: 'store4_dianping.jpg', img2: 'store4_douyin.png' },
+            { name: '坦洲五店', address: '南坦路 牡丹酒店旁141号店铺', phone: '(0760) 8698 5356', img1: 'store5_dianping.jpg', img2: 'store5_douyin.png' }
         ];
 
         const container = document.getElementById('storeList');
@@ -356,34 +326,29 @@
         stores.forEach((store, index) => {
             const section = document.createElement('div');
             section.className = 'store-section';
-
-            // Phone display
             const phoneHtml = store.phone ? `<div class="store-phone">📞 ${store.phone}</div>` : '';
 
             section.innerHTML = [
-                `<div class="store-name">${index + 1}. ${store.name} <span class="tag">🍖 一店一码</span></div>`,
+                `<div class="store-name">${index + 1}. ${store.name}</div>`,
                 `<div class="store-address">📍 ${store.address}</div>`,
                 phoneHtml,
                 '<div class="qr-pair">',
-                // 大众点评 (JPG)
                 '  <div class="qr-item">',
                 '    <div class="img-wrap">',
-                `      <img src="${store.jpg}" alt="${store.name} 大众点评码" loading="lazy">`,
+                `      <img src="${store.img1}" alt="${store.name} 大众点评" loading="lazy">`,
                 '    </div>',
                 '    <div class="platform-label dianping">⭐ 大众点评</div>',
-                '    <div class="hint">长按识别 · 领取优惠券</div>',
+                '    <div class="hint">长按识别 · 领券</div>',
                 '  </div>',
-                // 抖音 (PNG)
                 '  <div class="qr-item">',
                 '    <div class="img-wrap">',
-                `      <img src="${store.png}" alt="${store.name} 抖音码" loading="lazy">`,
+                `      <img src="${store.img2}" alt="${store.name} 抖音" loading="lazy">`,
                 '    </div>',
                 '    <div class="platform-label douyin">🎵 抖音</div>',
-                '    <div class="hint">长按识别 · 领取优惠券</div>',
+                '    <div class="hint">长按识别 · 领券</div>',
                 '  </div>',
                 '</div>'
             ].join('');
-
             container.appendChild(section);
         });
     </script>
